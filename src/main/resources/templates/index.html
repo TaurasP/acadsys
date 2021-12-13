@@ -8,18 +8,37 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    <h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h1>
 
     <div sec:authorize="hasRole('ADMIN')">
-        This content is only shown to administrators.
+        <form th:action="@{/groups}" method="get">
+            <input type="submit" value="Studentų grupių valdymas"/>
+        </form>
+        <br/>
+        <form th:action="@{/courses}" method="get">
+            <input type="submit" value="Dėstomų dalykų valdymas"/>
+        </form>
+        <br/>
+        <form th:action="@{/lecturers}" method="get">
+            <input type="submit" value="Dėstytojų valdymas"/>
+        </form>
+        <br/>
+        <form th:action="@{/students}" method="get">
+            <input type="submit" value="Studentų valdymas"/>
+        </form>
+
+        <h2 th:inline="text">Dėstytojus priskirti prie dėstomo dalyko</h2>
+        <h2 th:inline="text">Studentus priskirti prie grupės</h2>
+        <h2 th:inline="text">Dėstomą dalyką priskirti prie grupės</h2>
     </div>
 
     <div sec:authorize="hasRole('LECTURER')">
-        This content is only shown to lecturers.
+        <h2 th:inline="text">Galimybė įvesti pasirinkto studento dalyko pažymį</h2>
+        <h2 th:inline="text">Galimybė redaguoti pasirinkto studento dalyko pažymį</h2>
     </div>
 
     <div sec:authorize="hasRole('STUDENT')">
-        This content is only shown to students.
+        <h2 th:inline="text">Galimybė peržiūrėti savo pažymius</h2>
     </div>
 
     <br/>

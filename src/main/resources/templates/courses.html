@@ -3,21 +3,15 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>Dėstomi dalykai</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h1>
+<h1 th:inline="text">Dėstomi dalykai</h1>
 
-    <div>
-        Custom administrator page.
-    </div>
-
-
-    <br/>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
+<div>
+    Dėstomų dalykų sąrašas.
+</div>
 </body>
 </html>
