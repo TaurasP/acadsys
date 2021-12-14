@@ -13,24 +13,24 @@
         <form th:action="@{/login}" method="post" class="form login">
 
             <div class="form__field">
-                <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
-                <input id="login__username" type="text" name="username" class="form__input" placeholder="Username" required>
+                <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Naudotojo vardas</span></label>
+                <input id="login__username" type="text" name="username" class="form__input" placeholder="Naudotojo vardas" required>
             </div>
 
             <div class="form__field">
-                <label for="login__password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Password</span></label>
-                <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
+                <label for="login__password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Slaptažodis</span></label>
+                <input id="login__password" type="password" name="password" class="form__input" placeholder="Slaptažodis" required>
             </div>
 
             <div class="text--center" th:if="${param.error}">
-                Invalid username and password.
+                Neteisingas naudotojo vardas ir slaptažodis.
             </div>
             <div class="text--center" th:if="${param.logout}">
-                You have been logged out.
+                Jūs sėkmingai atsijungėte nuo sistemos.
             </div>
 
             <div class="form__field">
-                <input type="submit" value="Sign In">
+                <input type="submit" value="Prisijungti">
             </div>
 
         </form>

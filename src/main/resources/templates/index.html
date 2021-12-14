@@ -3,54 +3,64 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Pradžia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h1>
+    <div class="container">
+        <div class="row">
+            <h1>Sveiki, [[${#httpServletRequest.remoteUser}]]!</h1>
+        </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            <div class="row btn-group">
+                <a class="btn btn-primary" href="/courses" role="button">Dėstomi dalykai</a>
+                <a class="btn btn-primary" href="/groups" role="button">Studentų grupės</a>
+                <a class="btn btn-primary" href="/lecturers" role="button">Dėstytojai</a>
+                <a class="btn btn-primary" href="/students" role="button">Studentai</a>
+            </div>
 
-    <div sec:authorize="hasRole('ADMIN')">
-        <form th:action="@{/groups}" method="get">
-            <input type="submit" value="Studentų grupių valdymas"/>
-        </form>
+            <div class="row">
+                <br/>
+                Dėstytojus priskirti prie dėstomo dalyko
+                <br/>
+                Studentus priskirti prie grupės
+                <br/>
+                Dėstomą dalyką priskirti prie grupės
+            </div>
+        </div>
+
+        <div sec:authorize="hasRole('LECTURER')">
+            <div class="row">
+                <br/>
+                Galimybė įvesti pasirinkto studento dalyko pažymį
+                <br/>
+                Galimybė redaguoti pasirinkto studento dalyko pažymį
+            </div>
+        </div>
+
+        <div sec:authorize="hasRole('STUDENT')" >
+            <div class="row">
+                <br/>
+                Galimybė peržiūrėti savo pažymius
+            </div>
+        </div>
+
+        <!--<div class="row">
+            User: <span sec:authentication="name">NOT FOUND</span>
+            Spring Roles: <span sec:authentication="principal.authorities">NOT FOUND</span>
+        </div>-->
+
         <br/>
-        <form th:action="@{/courses}" method="get">
-            <input type="submit" value="Dėstomų dalykų valdymas"/>
-        </form>
-        <br/>
-        <form th:action="@{/lecturers}" method="get">
-            <input type="submit" value="Dėstytojų valdymas"/>
-        </form>
-        <br/>
-        <form th:action="@{/students}" method="get">
-            <input type="submit" value="Studentų valdymas"/>
-        </form>
-
-        <h2 th:inline="text">Dėstytojus priskirti prie dėstomo dalyko</h2>
-        <h2 th:inline="text">Studentus priskirti prie grupės</h2>
-        <h2 th:inline="text">Dėstomą dalyką priskirti prie grupės</h2>
+        <div class="row">
+            <a class="btn btn-warning" href="/logout" role="button">Atsijungti</a>
+        </div>
     </div>
 
-    <div sec:authorize="hasRole('LECTURER')">
-        <h2 th:inline="text">Galimybė įvesti pasirinkto studento dalyko pažymį</h2>
-        <h2 th:inline="text">Galimybė redaguoti pasirinkto studento dalyko pažymį</h2>
-    </div>
-
-    <div sec:authorize="hasRole('STUDENT')">
-        <h2 th:inline="text">Galimybė peržiūrėti savo pažymius</h2>
-    </div>
-
-    <br/>
-
-    <div>
-        User: <span sec:authentication="name">NOT FOUND</span>
-        Spring Roles: <span sec:authentication="principal.authorities">NOT FOUND</span>
-    </div>
-
-    <br/>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
