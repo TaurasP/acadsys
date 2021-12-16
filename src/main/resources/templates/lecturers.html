@@ -11,20 +11,93 @@
 </head>
 <body>
 <div class="container" sec:authorize="hasRole('ADMIN')">
+
     <div class="row">
         <h1>Dėstytojai</h1>
     </div>
+
     <div class="row btn-group">
+        <a class="btn btn-primary" href="/index" role="button">Pradžia</a>
         <a class="btn btn-primary" href="/courses" role="button">Dėstomi dalykai</a>
         <a class="btn btn-primary" href="/groups" role="button">Studentų grupės</a>
         <a class="btn btn-primary active" href="/lecturers" role="button">Dėstytojai</a>
         <a class="btn btn-primary" href="/students" role="button">Studentai</a>
     </div>
-    <div class="row">
-        <br/>
-        Dėstytojų sąrašas.
+
+    <div class="row" style="padding-top: 20px; padding-bottom: 20px">
+        <h3>Dėstytojų sąrašas.</h3>
     </div>
+
+    <div class="row" style="padding-bottom: 20px">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addLecturerModal" data-whatever="@mdo">Pridėti</button>
+    </div>
+
+    <div>
+        <div class="modal fade" id="addLecturerModal" tabindex="-1" role="dialog" aria-labelledby="addLecturerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addLecturerModalLabel">Dėstytojo duomenų įvedimas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="lecturer-name" class="col-form-label">Dėstytojo vardas:</label>
+                                <input type="text" class="form-control" id="lecturer-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="lecturer-surname" class="col-form-label">Dėstytojo pavardė:</label>
+                                <input type="text" class="form-control" id="lecturer-surname">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Atšaukti</button>
+                        <button type="button" class="btn btn-primary">Išsaugoti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
     <br/>
+
     <div class="row">
         <a class="btn btn-warning" href="/logout" role="button">Atsijungti</a>
     </div>

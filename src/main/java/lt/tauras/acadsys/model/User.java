@@ -1,26 +1,44 @@
-package lt.tauras.acadsys.models;
+package lt.tauras.acadsys.model;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "users")
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
-    private String name;
-    private String surname;
-    private String userName;
-    private String password;
+    //@Column(nullable = false, length = 4)
+    @Column
     private boolean active;
-    private String role;
 
-    public int getId() {
+    //@Column(nullable = false, length = 45)
+    @Column
+    private String name;
+
+    //@Column(nullable = false, length = 45)
+    @Column
+    private String surname;
+
+    //@Column(nullable = false, length = 100)
+    @Column
+    private String password;
+
+    //@Column(nullable = false, length = 45, name = "user_name")
+    @Column(name = "user_name")
+    private String userName;
+
+    //@Column(nullable = false, length = 45)
+    @Column
+    private String roles;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -64,11 +82,11 @@ public class User {
         this.active = active;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoles() {
+        return roles;
     }
 
-    public void setRole(String roles) {
-        this.role = roles;
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }

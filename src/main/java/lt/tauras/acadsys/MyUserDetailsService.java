@@ -1,7 +1,7 @@
 package lt.tauras.acadsys;
 
-import lt.tauras.acadsys.models.MyUserDetails;
-import lt.tauras.acadsys.models.User;
+import lt.tauras.acadsys.repository.UserRepository;
+import lt.tauras.acadsys.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
