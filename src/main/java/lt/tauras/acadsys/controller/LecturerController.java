@@ -20,7 +20,7 @@ public class LecturerController {
     // display list of lecturers
     @GetMapping("/lecturers")
     public String viewLecturersPage(Model model) {
-        model.addAttribute("listLecturers", lecturerService.getAllSLecturers());
+        model.addAttribute("listLecturers", lecturerService.getAllLecturers());
         return "lecturers";
     }
 
@@ -42,17 +42,6 @@ public class LecturerController {
         lecturerService.saveLecturer(lecturer);
         return "redirect:/lecturers";
     }
-
-    /*@GetMapping("/showLecturerFormForUpdate/{id}")
-    public String showLecturerFormForUpdate(@PathVariable( value = "id") long id, Model model) {
-
-        // get lecturer from the service
-        Lecturer lecturer = lecturerService.getLecturerById(id);
-
-        // set lecturer as a model attribute to pre-populate the form
-        model.addAttribute("lecturer", lecturer);
-        return "update_lecturer";
-    }*/
 
     @GetMapping("/deleteLecturer/{id}")
     public String deleteLecturer(@PathVariable (value = "id") long id) {

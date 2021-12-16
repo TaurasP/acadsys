@@ -17,7 +17,7 @@ public class LecturerServiceImpl implements LecturerService{
     private LecturerRepository lecturerRepository;
 
     @Override
-    public List<Lecturer> getAllSLecturers() {
+    public List<Lecturer> getAllLecturers() {
         return lecturerRepository.findAll();
     }
 

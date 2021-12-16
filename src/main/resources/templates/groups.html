@@ -11,52 +11,45 @@
 </head>
 <body>
 <div class="container" sec:authorize="hasRole('ADMIN')">
-    <div class="row">
+    <div>
         <h1>Studentų grupės</h1>
     </div>
-    <div class="row btn-group">
+    <div class="btn-group">
         <a class="btn btn-primary" href="/index" role="button">Pradžia</a>
         <a class="btn btn-primary" href="/courses" role="button">Dėstomi dalykai</a>
         <a class="btn btn-primary active" href="/groups" role="button">Studentų grupės</a>
         <a class="btn btn-primary" href="/lecturers" role="button">Dėstytojai</a>
         <a class="btn btn-primary" href="/students" role="button">Studentai</a>
     </div>
-    <div class="row">
-        <br/>
-        Studentų grupių sąrašas.
-        <table class="table">
+
+    <div style="padding-top: 20px; padding-bottom: 20px">
+
+        <a th:href = "@{/showNewGroupForm}" class="btn btn-success btn-sm mb-3">Pridėti</a>
+
+        <table class = "table table-striped table-responsive-md">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Surname</th>
-                <th scope="col">Handle</th>
+                <th>
+                    <a>Pavadinimas</a>
+                </th>
+                <th> Veiksmai </th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+            <tr th:each="group : ${listGroups}">
+                <td th:text="${group.name}"></td>
+                <td>
+                    <!--<a th:href="@{/showGroupFormForUpdate/{id}(id=${group.id})}" class="btn btn-primary">Redaguoti</a>-->
+                    <a th:href="@{/deleteGroup/{id}(id=${group.id})}" class="btn btn-danger">Ištrinti</a>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
+
     <br/>
-    <div class="row">
+
+    <div>
         <a class="btn btn-warning" href="/logout" role="button">Atsijungti</a>
     </div>
 

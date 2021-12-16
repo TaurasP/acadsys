@@ -11,18 +11,14 @@
 </head>
 <body>
 <div class="container">
-    <h1>Naujo dėstytojo duomenų įvedimas</h1>
+    <h1>Naujo dėstomo dalyko duomenų įvedimas</h1>
     <hr>
 
-    <form action="#" th:action="@{/saveLecturer}" th:object="${lecturer}"
+    <form action="#" th:action="@{/saveCourse}" th:object="${course}"
           method="POST">
-        <a>Vardas</a>
+        <a>Pavadinimas</a>
         <input type="text" th:field="*{name}"
-               placeholder="Vardas" class="form-control mb-4 col-4">
-
-        <a>Pavardė</a>
-        <input type="text" th:field="*{surname}"
-               placeholder="Pavardė" class="form-control mb-4 col-4">
+               placeholder="Pavadinimas" class="form-control mb-4 col-4">
 
         <button type="submit" class="btn btn-info col-2">Išsaugoti</button>
     </form>
@@ -30,7 +26,7 @@
     <hr>
 
     <div>
-        <a class="btn btn-warning" style="margin-right: 10px" href="/lecturers" role="button">Grįžti atgal</a>
+        <a class="btn btn-warning" style="margin-right: 10px" href="/courses" role="button">Grįžti atgal</a>
         <a class="btn btn-warning" href="/logout" role="button">Atsijungti</a>
     </div>
 </div>

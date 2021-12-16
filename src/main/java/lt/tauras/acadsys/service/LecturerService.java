@@ -5,7 +5,7 @@ import lt.tauras.acadsys.model.Lecturer;
 import java.util.List;
 
 public interface LecturerService {
-    List<Lecturer> getAllSLecturers();
+    List<Lecturer> getAllLecturers();
     void saveLecturer(Lecturer lecturer);
     Lecturer getLecturerById(long id);
     void deleteLecturerById(long id);
