@@ -21,10 +21,10 @@ public class UserController {
     private UserService userService;
 
     // display list of users
-    @GetMapping("/index")
+    /*@GetMapping("/index")
     public String viewHomePage(Model model) {
         return findPaginated(1, "userName", "asc", model);
-    }
+    }*/
 
     @GetMapping("/showNewUserForm")
     public String showNewUserForm(Model model) {
@@ -55,13 +55,13 @@ public class UserController {
     @GetMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable (value = "id") long id) {
 
-        // call user employee method
+        // call delete user method
         this.userService.deleteUserById(id);
         return "redirect:/index";
     }
 
 
-    @GetMapping("/page/{pageNo}")
+    /*@GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable (value = "pageNo") int pageNo,
                                 @RequestParam("sortField") String sortField,
                                 @RequestParam("sortDir") String sortDir,
@@ -81,7 +81,7 @@ public class UserController {
 
         model.addAttribute("listUsers", listUsers);
         return "index";
-    }
+    }*/
 
 
 

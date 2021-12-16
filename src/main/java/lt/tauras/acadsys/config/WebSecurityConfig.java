@@ -36,12 +36,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers( "/css/**").permitAll()
-                .antMatchers("/admin").hasRole("ADMIN")
-                /*.antMatchers("/showNewUserForm").hasRole("ADMIN")*/
+                //.antMatchers("/admin").hasRole("ADMIN")
+                //.antMatchers("/showNewUserForm").hasRole("ADMIN")
                 .antMatchers("/students").hasRole("ADMIN")
                 .antMatchers("/lecturers").hasRole("ADMIN")
                 .antMatchers("/courses").hasRole("ADMIN")
                 .antMatchers("/groups").hasRole("ADMIN")
+                .antMatchers("/index").hasAnyRole("ADMIN", "LECTURER", "STUDENT")
                 .antMatchers("/lecturer").hasAnyRole("ADMIN", "LECTURER")
                 .antMatchers("/student").hasAnyRole("ADMIN", "STUDENT")
                 .anyRequest().authenticated()

@@ -4,34 +4,28 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    //@Column(nullable = false, length = 4)
-    @Column
+    @Column(nullable = false, length = 4)
     private boolean active;
 
-    //@Column(nullable = false, length = 45)
-    @Column
+    @Column(nullable = false, length = 45)
     private String name;
 
-    //@Column(nullable = false, length = 45)
-    @Column
+    @Column(nullable = false, length = 45)
     private String surname;
 
-    //@Column(nullable = false, length = 100)
-    @Column
+    @Column(nullable = false, length = 100)
     private String password;
 
-    //@Column(nullable = false, length = 45, name = "user_name")
-    @Column(name = "user_name")
+    @Column(nullable = false, length = 45, name = "user_name")
     private String userName;
 
-    //@Column(nullable = false, length = 45)
-    @Column
+    @Column(nullable = false, length = 45)
     private String roles;
 
     public long getId() {
