@@ -12,11 +12,11 @@
 <body>
 <div class="container" sec:authorize="hasRole('ADMIN')">
 
-    <div class="row">
+    <div>
         <h1>Studentai</h1>
     </div>
 
-    <div class="row btn-group">
+    <div class="btn-group">
         <a class="btn btn-primary" href="/index" role="button">Pradžia</a>
         <a class="btn btn-primary" href="/courses" role="button">Dėstomi dalykai</a>
         <a class="btn btn-primary" href="/groups" role="button">Studentų grupės</a>
@@ -24,72 +24,46 @@
         <a class="btn btn-primary active" href="/students" role="button">Studentai</a>
     </div>
 
-    <div class="row" style="padding-top: 20px; padding-bottom: 20px">
+    <div style="padding-top: 20px; padding-bottom: 20px">
 
-        <a th:href = "@{/showNewStudentForm}" class="btn btn-primary btn-sm mb-3">Pridėti</a>
+        <a th:href = "@{/showNewStudentForm}" class="btn btn-success btn-sm mb-3">Pridėti</a>
 
         <table class = "table table-striped table-responsive-md">
             <thead>
             <tr>
                 <th>
-                    <a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
-                        Vardas</a>
+                    <a>Vardas</a>
                 </th>
                 <th>
-                    <a th:href="@{'/page/' + ${currentPage} + '?sortField=surname&sortDir=' + ${reverseSortDir}}">
-                        Pavardė</a>
+                    <a>Pavardė</a>
                 </th>
                 <th>
-                    <a th:href="@{'/page/' + ${currentPage} + '?sortField=userName&sortDir=' + ${reverseSortDir}}">
-                        Naudotojo vardas</a>
+                    <a>Naudotojo vardas</a>
                 </th>
                 <th>
-                    <a th:href="@{'/page/' + ${currentPage} + '?sortField=password&sortDir=' + ${reverseSortDir}}">
-                        Naudotojo slaptažodis</a>
+                    <a>Slaptažodis</a>
                 </th>
                 <th> Veiksmai </th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="student : ${listStudents}">
-                <td th:text="${student.name}"></td>
-                <td th:text="${student.surname}"></td>
-                <td th:text="${student.userName}"></td>
-                <td th:text="${student.password}"></td>
-                <td> <a th:href="@{/showStudentFormForUpdate/{id}(id=${student.id})}" class="btn btn-primary">Redaguoti</a>
-                    <a th:href="@{/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger">Ištrinti</a>
-                </td>
-            </tr>
+                <tr th:each="student : ${listStudents}">
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.surname}"></td>
+                    <td th:text="${student.userName}"></td>
+                    <td th:text="${student.password}"></td>
+                    <td>
+                        <!--<a th:href="@{/showStudentFormForUpdate/{id}(id=${student.id})}" class="btn btn-primary">Redaguoti</a>-->
+                        <a th:href="@{/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger">Ištrinti</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
-
-        <div th:if = "${totalPages > 1}">
-            <div class = "row col-sm-10">
-                <div class = "col-sm-2">
-                    Total Rows: [[${totalItems}]]
-                </div>
-                <div class = "col-sm-1">
-					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-						<a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
-						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
-					</span>
-                </div>
-                <div class = "col-sm-1">
-                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Kitas</a>
-                    <span th:unless="${currentPage < totalPages}">Kitas</span>
-                </div>
-
-                <div class="col-sm-1">
-                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Paskutinis</a>
-                    <span th:unless="${currentPage < totalPages}">Paskutinis</span>
-                </div>
-            </div>
-        </div>
     </div>
 
     <br/>
 
-    <div class="row">
+    <div>
         <a class="btn btn-warning" href="/logout" role="button">Atsijungti</a>
     </div>
 </div>

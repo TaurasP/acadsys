@@ -2,6 +2,7 @@ package lt.tauras.acadsys.controller;
 
 import lt.tauras.acadsys.model.Student;
 import lt.tauras.acadsys.service.StudentService;
+import lt.tauras.acadsys.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,7 @@ public class StudentController {
 
     // display list of students
     @GetMapping("/students")
-    public String viewHomePage(Model model) {
+    public String viewStudentsPage(Model model) {
         model.addAttribute("listStudents", studentService.getAllStudents());
         return "students";
     }
@@ -30,11 +31,15 @@ public class StudentController {
     @PostMapping("/saveStudent")
     public String saveStudent(@ModelAttribute("student") Student student) {
         // save student to database
+        student.setUserName(student.getName().toLowerCase());
+        student.setPassword(student.getSurname().toLowerCase());
+        student.setActive(true);
+        student.setRoles(UserServiceImpl.ROLE_STUDENT);
         studentService.saveStudent(student);
         return "redirect:/students";
     }
 
-    @GetMapping("/showStudentFormForUpdate/{id}")
+    /*@GetMapping("/showStudentFormForUpdate/{id}")
     public String showStudentFormForUpdate(@PathVariable( value = "id") long id, Model model) {
 
         // get student from the service
@@ -43,7 +48,7 @@ public class StudentController {
         // set student as a model attribute to pre-populate the form
         model.addAttribute("student", student);
         return "update_student";
-    }
+    }*/
 
     @GetMapping("/deleteStudent/{id}")
     public String deleteStudent(@PathVariable (value = "id") long id) {

@@ -11,11 +11,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
+        <div>
             <h1>Sveiki, [[${#httpServletRequest.remoteUser}]]!</h1>
         </div>
         <div sec:authorize="hasRole('ADMIN')">
-            <div class="row btn-group">
+            <div class="btn-group">
                 <a class="btn btn-primary active" href="/index" role="button">Pradžia</a>
                 <a class="btn btn-primary" href="/courses" role="button">Dėstomi dalykai</a>
                 <a class="btn btn-primary" href="/groups" role="button">Studentų grupės</a>
@@ -23,7 +23,7 @@
                 <a class="btn btn-primary" href="/students" role="button">Studentai</a>
             </div>
 
-            <div class="row">
+            <div>
                 <br/>
                 Dėstytojus priskirti prie dėstomo dalyko
                 <br/>
@@ -34,7 +34,7 @@
         </div>
 
         <div sec:authorize="hasRole('LECTURER')">
-            <div class="row">
+            <div>
                 <br/>
                 Galimybė įvesti pasirinkto studento dalyko pažymį
                 <br/>
@@ -43,7 +43,7 @@
         </div>
 
         <div sec:authorize="hasRole('STUDENT')" >
-            <div class="row">
+            <div>
                 <br/>
                 Galimybė peržiūrėti savo pažymius
             </div>
@@ -55,7 +55,7 @@
         </div>-->
 
         <br/>
-        <div class="row">
+        <div>
             <a class="btn btn-warning" href="/logout" role="button">Atsijungti</a>
         </div>
     </div>

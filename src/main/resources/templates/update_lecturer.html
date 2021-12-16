@@ -11,10 +11,10 @@
 </head>
 <body>
 <div class="container">
-    <h1>Studento duomenų redagavimas</h1>
+    <h1>Dėstytojo duomenų redagavimas</h1>
     <hr>
 
-    <form action="#" th:action="@{/saveStudent}" th:object="${student}"
+    <form action="#" th:action="@{/saveLecturer}" th:object="${lecturer}"
           method="POST">
 
         <!-- Add hidden form field to handle update -->
@@ -41,7 +41,7 @@
     <hr>
 
     <div class="row">
-        <a class="btn btn-warning" style="margin-right: 10px" href="/students" role="button">Grįžti atgal</a>
+        <a class="btn btn-warning" style="margin-right: 10px" href="/lecturers" role="button">Grįžti atgal</a>
         <a class="btn btn-warning" href="/logout" role="button">Atsijungti</a>
     </div>
 </div>

@@ -24,73 +24,38 @@
         <a class="btn btn-primary" href="/students" role="button">Studentai</a>
     </div>
 
-    <div class="row" style="padding-top: 20px; padding-bottom: 20px">
-        <h3>Dėstytojų sąrašas.</h3>
-    </div>
+    <div style="padding-top: 20px; padding-bottom: 20px">
 
-    <div class="row" style="padding-bottom: 20px">
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addLecturerModal" data-whatever="@mdo">Pridėti</button>
-    </div>
+        <a th:href = "@{/showNewLecturerForm}" class="btn btn-success btn-sm mb-3">Pridėti</a>
 
-    <div>
-        <div class="modal fade" id="addLecturerModal" tabindex="-1" role="dialog" aria-labelledby="addLecturerModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addLecturerModalLabel">Dėstytojo duomenų įvedimas</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="lecturer-name" class="col-form-label">Dėstytojo vardas:</label>
-                                <input type="text" class="form-control" id="lecturer-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="lecturer-surname" class="col-form-label">Dėstytojo pavardė:</label>
-                                <input type="text" class="form-control" id="lecturer-surname">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Atšaukti</button>
-                        <button type="button" class="btn btn-primary">Išsaugoti</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <table class="table">
+        <table class = "table table-striped table-responsive-md">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Surname</th>
-                <th scope="col">Handle</th>
+                <th>
+                    <a>Vardas</a>
+                </th>
+                <th>
+                    <a>Pavardė</a>
+                </th>
+                <th>
+                    <a>Naudotojo vardas</a>
+                </th>
+                <th>
+                    <a>Slaptažodis</a>
+                </th>
+                <th> Veiksmai </th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+            <tr th:each="lecturer : ${listLecturers}">
+                <td th:text="${lecturer.name}"></td>
+                <td th:text="${lecturer.surname}"></td>
+                <td th:text="${lecturer.userName}"></td>
+                <td th:text="${lecturer.password}"></td>
+                <td>
+                    <!--<a th:href="@{/showStudentFormForUpdate/{id}(id=${lecturer.id})}" class="btn btn-primary">Redaguoti</a>-->
+                    <a th:href="@{/deleteLecturer/{id}(id=${lecturer.id})}" class="btn btn-danger">Ištrinti</a>
+                </td>
             </tr>
             </tbody>
         </table>

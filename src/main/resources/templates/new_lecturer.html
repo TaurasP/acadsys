@@ -11,10 +11,10 @@
 </head>
 <body>
 <div class="container">
-    <h1>Naujo studento duomenų įvedimas</h1>
+    <h1>Naujo dėstytojo duomenų įvedimas</h1>
     <hr>
 
-    <form action="#" th:action="@{/saveStudent}" th:object="${student}"
+    <form action="#" th:action="@{/saveLecturer}" th:object="${lecturer}"
           method="POST">
         <a>Vardas</a>
         <input type="text" th:field="*{name}"
@@ -30,7 +30,7 @@
     <hr>
 
     <div>
-        <a class="btn btn-warning" style="margin-right: 10px" href="/students" role="button">Grįžti atgal</a>
+        <a class="btn btn-warning" style="margin-right: 10px" href="/lecturers" role="button">Grįžti atgal</a>
         <a class="btn btn-warning" href="/logout" role="button">Atsijungti</a>
     </div>
 </div>
