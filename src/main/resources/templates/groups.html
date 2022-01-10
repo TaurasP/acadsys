@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container" sec:authorize="hasRole('ADMIN')">
+<div class="container" sec:authorize="hasAnyRole('ADMIN', 'LECTURER')">
     <div>
         <h1>Studentų grupės</h1>
     </div>
@@ -40,6 +40,7 @@
                 <td th:text="${group.name}"></td>
                 <td>
                     <!--<a th:href="@{/showGroupFormForUpdate/{id}(id=${group.id})}" class="btn btn-primary">Redaguoti</a>-->
+                    <a th:href="@{/group_students/{id}(id=${group.id})}" class="btn btn-primary">Peržiūrėti studentų sąrašą</a>
                     <a th:href="@{/deleteGroup/{id}(id=${group.id})}" class="btn btn-danger">Ištrinti</a>
                 </td>
             </tr>
@@ -50,9 +51,11 @@
     <br/>
 
     <div>
+        <!--<a class="btn btn-primary" th:href="@{/group_students/}">Grupės studentai</a>-->
         <a class="btn btn-warning" href="/logout" role="button">Atsijungti</a>
     </div>
 
+</div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

@@ -1,10 +1,12 @@
 package lt.tauras.acadsys.service;
 
 import lt.tauras.acadsys.model.Student;
+import lt.tauras.acadsys.repository.GroupRepository;
 import lt.tauras.acadsys.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +19,34 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
+    }
+
+    @Override
+    public List<Student> getAllStudentsWithoutGroup() {
+        List<Student> allStudents = studentRepository.findAll();
+        List<Student> studentsWithoutGroup = new ArrayList<>();
+
+        for (int i = 0; i < allStudents.size(); i++) {
+            if (allStudents.get(i).getGroup() == null) {
+                studentsWithoutGroup.add(allStudents.get(i));
+            }
+        }
+
+        return studentsWithoutGroup;
+    }
+
+    @Override
+    public List<Student> getAllStudentsWithGroup() {
+        List<Student> allStudents = studentRepository.findAll();
+        List<Student> studentsWithGroup = new ArrayList<>();
+
+        for (int i = 0; i < allStudents.size(); i++) {
+            if (allStudents.get(i).getGroup() != null) {
+                studentsWithGroup.add(allStudents.get(i));
+            }
+        }
+
+        return studentsWithGroup;
     }
 
     @Override

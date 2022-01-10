@@ -1,8 +1,9 @@
 package lt.tauras.acadsys.service;
 
 import lt.tauras.acadsys.model.Group;
-import lt.tauras.acadsys.model.Lecturer;
+import lt.tauras.acadsys.model.Student;
 import lt.tauras.acadsys.repository.GroupRepository;
+import lt.tauras.acadsys.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ public class GroupServiceImpl implements GroupService{
 
     @Autowired
     private GroupRepository groupRepository;
+
+    @Autowired
+    StudentRepository studentRepository;
 
     @Override
     public List<Group> getAllGroups() {
@@ -41,4 +45,10 @@ public class GroupServiceImpl implements GroupService{
     public void deleteGroupById(long id) {
         this.groupRepository.deleteById(id);
     }
+
+    @Override
+    public List<Student> getAllStudentsByGroupId(long groupId) {
+        return groupRepository.getById(groupId).getStudents();
+    }
+
 }
