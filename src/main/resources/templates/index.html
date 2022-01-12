@@ -17,37 +17,37 @@
         <div>
             <div class="btn-group">
                 <a class="btn btn-primary active" href="/index" role="button">Pradžia</a>
-                <a sec:authorize="hasAnyRole('ADMIN', 'LECTURER', 'STUDENT')" class="btn btn-primary" href="/courses" role="button">Dėstomi dalykai</a>
+                <a sec:authorize="hasAnyRole('ADMIN')" class="btn btn-primary" href="/courses" role="button">Dėstomi dalykai</a>
                 <a sec:authorize="hasRole('ADMIN')" class="btn btn-primary" href="/groups" role="button">Studentų grupės</a>
                 <a sec:authorize="hasRole('ADMIN')" class="btn btn-primary" href="/lecturers" role="button">Dėstytojai</a>
                 <a sec:authorize="hasRole('ADMIN')" class="btn btn-primary" href="/students" role="button">Studentai</a>
             </div>
 
-            <div sec:authorize="hasRole('ADMIN')">
+            <!--<div sec:authorize="hasRole('ADMIN')">
                 <br/>
                 Dėstytojus priskirti prie dėstomo dalyko (Lecturers list -> Course (-s))
                 <br/>
                 Studentus priskirti prie grupės
                 <br/>
                 Dėstomą dalyką priskirti prie grupės
-            </div>
+            </div>-->
         </div>
 
-        <div sec:authorize="hasRole('LECTURER')">
+        <!--<div sec:authorize="hasRole('LECTURER')">
             <div>
                 <br/>
                 Galimybė įvesti pasirinkto studento dalyko pažymį (Courses list -> Groups list -> Students list -> Student -> enter Grade)
                 <br/>
                 Galimybė redaguoti pasirinkto studento dalyko pažymį (Courses list -> Groups list -> Students list -> Student -> edit Grade)
             </div>
-        </div>
+        </div>-->
 
-        <div sec:authorize="hasRole('STUDENT')" >
+        <!--<div sec:authorize="hasRole('STUDENT')" >
             <div>
                 <br/>
                 Galimybė peržiūrėti savo pažymius
             </div>
-        </div>
+        </div>-->
 
         <!--<div class="row">
             User: <span sec:authentication="name">NOT FOUND</span>

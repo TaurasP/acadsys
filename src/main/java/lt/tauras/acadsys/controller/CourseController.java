@@ -1,7 +1,9 @@
 package lt.tauras.acadsys.controller;
 
 import lt.tauras.acadsys.model.Course;
+import lt.tauras.acadsys.model.Student;
 import lt.tauras.acadsys.service.CourseService;
+import lt.tauras.acadsys.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +18,14 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    @Autowired
+    private GradeService gradeService;
+
     // display list of courses
     @GetMapping("/courses")
-    public String viewCoursesPage(Model model) {
+    public String viewCoursesPage(@ModelAttribute("student") Student student, Model model) {
         model.addAttribute("listCourses", courseService.getAllCourses());
+        model.addAttribute("listGrades", gradeService.getAllStudentCourseGrades(student));
         return "courses";
     }
 
