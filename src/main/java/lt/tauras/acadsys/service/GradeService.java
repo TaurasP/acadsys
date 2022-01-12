@@ -1,6 +1,5 @@
 package lt.tauras.acadsys.service;
 
-import lt.tauras.acadsys.model.Course;
 import lt.tauras.acadsys.model.Grade;
 import lt.tauras.acadsys.model.Student;
 

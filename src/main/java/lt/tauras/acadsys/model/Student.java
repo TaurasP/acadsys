@@ -3,9 +3,7 @@ package lt.tauras.acadsys.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-//@Entity(name = "JoinTableStudent")
 @Entity
 @Table(name = "students")
 public class Student extends User{

@@ -19,9 +19,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 
-        // Pagalvoti kaip geriau - ar nukreipti visas roles i index puslapi ar i atskirus
         if (roles.contains("ROLE_ADMIN")) {
-            // galetu buti i /admin
             httpServletResponse.sendRedirect("/index");
         } else {
             httpServletResponse.sendRedirect("/index");

@@ -36,7 +36,7 @@ public class GroupServiceImpl implements GroupService{
         if (optional.isPresent()) {
             group = optional.get();
         } else {
-            throw new RuntimeException(" Group not found for id :: " + id);
+            throw new RuntimeException(" Grupė nerasta pagal id :: " + id);
         }
         return group;
     }

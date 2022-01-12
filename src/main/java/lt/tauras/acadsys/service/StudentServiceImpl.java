@@ -1,7 +1,6 @@
 package lt.tauras.acadsys.service;
 
 import lt.tauras.acadsys.model.Student;
-import lt.tauras.acadsys.repository.GroupRepository;
 import lt.tauras.acadsys.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,17 +50,13 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void saveStudent(Student student) {
-        /*student.setUserName(student.getName().toLowerCase());
-        student.setPassword(student.getSurname().toLowerCase());
-        student.setActive(true);
-        student.setRoles(UserServiceImpl.ROLE_STUDENT);*/
         this.studentRepository.save(student);
     }
 
     @Override
     public Student getStudentById(long id) {
         Optional<Student> optional = studentRepository.findById(id);
-        Student student = null;
+        Student student;
         if (optional.isPresent()) {
             student = optional.get();
         } else {

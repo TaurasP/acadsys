@@ -33,7 +33,7 @@ public class LecturerServiceImpl implements LecturerService{
         if (optional.isPresent()) {
             lecturer = optional.get();
         } else {
-            throw new RuntimeException(" Lecturer not found for id :: " + id);
+            throw new RuntimeException(" Dėstytojas nerastas pagal id :: " + id);
         }
         return lecturer;
     }

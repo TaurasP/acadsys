@@ -25,7 +25,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsService userDetailsService;
 
-    // UPGRADE --> ENCODE PASSWORDS
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return NoOpPasswordEncoder.getInstance();
@@ -36,16 +35,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers( "/css/**").permitAll()
-                //.antMatchers("/admin").hasRole("ADMIN")
-                //.antMatchers("/showNewUserForm").hasRole("ADMIN")
                 .antMatchers("/students").hasAnyRole("ADMIN", "LECTURER")
                 .antMatchers("/lecturers").hasRole("ADMIN")
                 .antMatchers("/courses").hasAnyRole("ADMIN", "LECTURER", "STUDENT")
                 .antMatchers("/groups").hasAnyRole("ADMIN", "LECTURER")
                 .antMatchers("/group_students").hasRole("ADMIN")
-                //.antMatchers("/index").hasAnyRole("ADMIN", "LECTURER", "STUDENT")
-                //.antMatchers("/lecturer").hasAnyRole("ADMIN", "LECTURER")
-                //.antMatchers("/student").hasAnyRole("ADMIN", "STUDENT")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -55,6 +49,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll()
-                .and().csrf().disable(); // we'll enable this in a later blog post
+                .and().csrf().disable();
     }
 }

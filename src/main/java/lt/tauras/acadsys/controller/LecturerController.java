@@ -17,7 +17,6 @@ public class LecturerController {
     @Autowired
     private LecturerService lecturerService;
 
-    // display list of lecturers
     @GetMapping("/lecturers")
     public String viewLecturersPage(Model model) {
         model.addAttribute("listLecturers", lecturerService.getAllLecturers());
@@ -26,7 +25,6 @@ public class LecturerController {
 
     @GetMapping("/showNewLecturerForm")
     public String showNewLecturerForm(Model model) {
-        // create model attribute to bind form data
         Lecturer lecturer = new Lecturer();
         model.addAttribute("lecturer", lecturer);
         return "new_lecturer";
@@ -34,7 +32,6 @@ public class LecturerController {
 
     @PostMapping("/saveLecturer")
     public String saveLecturer(@ModelAttribute("lecturer") Lecturer lecturer) {
-        // save lecturer to database
         lecturer.setUserName(lecturer.getName().toLowerCase());
         lecturer.setPassword(lecturer.getSurname().toLowerCase());
         lecturer.setActive(true);
@@ -45,8 +42,6 @@ public class LecturerController {
 
     @GetMapping("/deleteLecturer/{id}")
     public String deleteLecturer(@PathVariable (value = "id") long id) {
-
-        // call delete lecturer method
         this.lecturerService.deleteLecturerById(id);
         return "redirect:/lecturers";
     }

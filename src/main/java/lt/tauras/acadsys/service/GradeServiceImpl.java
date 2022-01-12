@@ -42,7 +42,7 @@ public class GradeServiceImpl implements GradeService{
         if (optional.isPresent()) {
             grade = optional.get();
         } else {
-            throw new RuntimeException(" Grade not found for id :: " + id);
+            throw new RuntimeException(" Pažymys nerastas pagal id :: " + id);
         }
         return grade;
     }

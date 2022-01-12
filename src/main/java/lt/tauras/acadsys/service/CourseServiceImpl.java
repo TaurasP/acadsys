@@ -31,7 +31,7 @@ public class CourseServiceImpl implements CourseService{
         if (optional.isPresent()) {
             course = optional.get();
         } else {
-            throw new RuntimeException(" Course not found for id :: " + id);
+            throw new RuntimeException(" Dėstomas dalykas nerastas pagal id :: " + id);
         }
         return course;
     }

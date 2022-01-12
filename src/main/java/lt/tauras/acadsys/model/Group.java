@@ -14,11 +14,6 @@ public class Group {
     @Column(nullable = false, length = 100)
     private String name;
 
-    /*@OneToMany
-    @JoinTable(name = "student_group",
-            joinColumns = @JoinColumn(name = "group_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))*/
-
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
 
@@ -55,10 +50,5 @@ public class Group {
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
-    }
-
-    // pasalinti, jei nepanaudosiu
-    public void addStudentToGroup(Student student) {
-        students.add(student);
     }
 }
