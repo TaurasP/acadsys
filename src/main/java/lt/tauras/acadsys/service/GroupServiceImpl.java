@@ -32,7 +32,7 @@ public class GroupServiceImpl implements GroupService{
     @Override
     public Group getGroupById(long id) {
         Optional<Group> optional = groupRepository.findById(id);
-        Group group = null;
+        Group group;
         if (optional.isPresent()) {
             group = optional.get();
         } else {

@@ -59,12 +59,12 @@ public class GroupController {
         return "group_students";
     }
 
-    @PostMapping("/group_students/{id}")
+    /*@PostMapping("/group_students/{id}")
     public String saveStudentToGroup(@PathVariable(value = "id") long id, @ModelAttribute("group") Group group, @ModelAttribute("student") Student student) {
         List<Student> studentsList = new ArrayList<>();
         studentsList.add(student);
         group.setStudents(studentsList);
         groupService.saveGroup(group);
         return "/group_students/{id}";
-    }
+    }*/
 }

@@ -27,7 +27,7 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public Course getCourseById(long id) {
         Optional<Course> optional = courseRepository.findById(id);
-        Course course = null;
+        Course course;
         if (optional.isPresent()) {
             course = optional.get();
         } else {

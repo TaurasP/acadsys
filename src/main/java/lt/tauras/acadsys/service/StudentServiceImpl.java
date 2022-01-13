@@ -60,7 +60,7 @@ public class StudentServiceImpl implements StudentService{
         if (optional.isPresent()) {
             student = optional.get();
         } else {
-            throw new RuntimeException(" Student not found for id :: " + id);
+            throw new RuntimeException(" Studentas nerastas pagal id :: " + id);
         }
         return student;
     }

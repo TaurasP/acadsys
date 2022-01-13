@@ -24,7 +24,7 @@ public class CourseController {
     @GetMapping("/courses")
     public String viewCoursesPage(@ModelAttribute("student") Student student, Model model) {
         model.addAttribute("listCourses", courseService.getAllCourses());
-        model.addAttribute("listGrades", gradeService.getAllStudentCourseGrades(student));
+        //model.addAttribute("listGrades", gradeService.getAllStudentCourseGrades(student));
         return "courses";
     }
 

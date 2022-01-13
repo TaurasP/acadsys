@@ -1,9 +1,7 @@
 package lt.tauras.acadsys.service;
 
 import lt.tauras.acadsys.model.Lecturer;
-import lt.tauras.acadsys.model.Student;
 import lt.tauras.acadsys.repository.LecturerRepository;
-import lt.tauras.acadsys.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +27,7 @@ public class LecturerServiceImpl implements LecturerService{
     @Override
     public Lecturer getLecturerById(long id) {
         Optional<Lecturer> optional = lecturerRepository.findById(id);
-        Lecturer lecturer = null;
+        Lecturer lecturer;
         if (optional.isPresent()) {
             lecturer = optional.get();
         } else {
